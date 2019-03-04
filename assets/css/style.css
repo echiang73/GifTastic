@@ -1,0 +1,99 @@
+@font-face {
+    font-family:"tiki-tropic-font";
+    src: url(../font/TikiTropic.ttf);
+}
+body{
+    background-image: url(../images/kapalua-bay-besthawaii0216.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: #f4b87c;
+}
+form{
+    margin-top: -25px;
+}
+/* this is for the new search box */
+input[type=text]{ 
+    /* width: 100%; */
+    border: 2px solid #aaa;
+    border-radius: 8px;
+    margin:4px 0px;
+    outline: none;
+    padding: 4px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+input[type=text]:focus{
+    border-color: dodgerblue;
+    box-shadow: 0 0 8px 0 dodgerblue;
+}
+/* this is for the entire new search box with icon */
+.inputWithIcon input[type=text]{
+    padding-left: 40px;
+}
+/* this is the entire row for the new search box with icons */
+.inputWithIcon{
+    position: relative;
+}
+/* to manipulate the font awesome icon */
+.inputWithIcon i{ 
+    position: absolute;
+    left: 0;
+    top: 15px;
+    /* padding:9px 8px; */ /* what is this? it's causing the gray padding*/
+    margin-left: 3px; /* will push icon to the right */
+    border-radius: 10px; /* added, doesn't seem to do anything to the icon */
+    color: #aaa;
+    transition: 0.5s;
+    /* border: 10px solid green; */
+}
+.inputWithIcon input[type=text]:focus + i{
+    color: dodgerblue;
+}
+/* .inputWithIcon.inputIconBg i{
+    background-color: #aaa;
+    color: #fff;
+    padding: 3px 7px;
+    border-radius: 8px 0 0 8px;
+}
+.inputWithIcon.inputIconBg input[type=text]:focus + i{
+    color:#fff;
+    background-color: dodgerblue;
+} */
+.fullTitle{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-family: "tiki-tropic-font";
+    font-size: 60px;
+    margin-top: -20px;
+}
+.inlineTitle{
+    display: flex;
+}
+#titleRed{
+    color: red;
+}
+#titleOra{
+    color: orange;
+}
+#titleYel{
+    color: yellow;
+}
+#titleGre{
+    color: green;
+}
+#titleBlu{
+    color: blue;
+}
+#titleInd{
+    color: indigo;
+}
+#titleVio{
+    color: blueviolet;
+}
+.topic-btn{
+    border-radius: 8px;
+    padding: 5px;
+    margin-right: 8px;
+}

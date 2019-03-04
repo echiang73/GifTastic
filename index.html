@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="shortcut icon" type="image/jpg" href="assets/images/echiang-brand.png" /> -->
+    <link rel="shortcut icon" type="image/jpg" href="assets/images/echiang-brand.png" />
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> -->
 
@@ -20,21 +20,41 @@
 </head>
 
 <body>
-
     <div class="container">
-        <h1>Hawaii Gif Search</h1>
+        <div class="p-3 mb-2 bg-transparent text-light fullTitle">
+            <!-- <h1>Hawaii Gif Search</h1> -->
+            <div class="inlineTitle">
+                <div id=titleRed>Ha</div>
+                <div id=titleOra>wai</div>
+                <div id=titleYel>i G</div>
+                <div id=titleGre>if S</div>
+                <div id=titleBlu>ea</div>
+                <div id=titleInd>rc</div>
+                <div id=titleVio>h</div>
+            </div>
+        </div>
+        <div class="p-3 mb-2 bg-transparent text-light">
+            <h6 class="">Click on a topic button: </h6>
 
-        <!-- Rendered Buttons will get Dumped Here  -->
-        <div id="buttons-view"></div>
+            <!-- Rendered Buttons will get Dumped Here  -->
+            <div id="buttons-view"></div><br/>
+            <h6 class="">Or create your own topic button: </h6>
+            <form id="search-form">
+                <label for="search-input"></label>
+                <div class="inputWithIcon">
+                    <input type="text" id="search-input" placeholder="Enter a new search">
+                    <i class="fas fa-search fa-lg fa-fw" aria-hidden="true" id="add-search" type="submit" value="add me"></i>
+                </div>
+                <!-- <div class="inputWithIcon inputIconBg">
+                    <input type="text" id="search-input" placeholder="Enter a search term">
+                    <i class="fas fa-search" id="add-search" type="submit" value="add me"></i>
+                </div> -->
 
-        <form id="search-form">
-            <label for="search-input">Search</label>
-            <input type="text" id="search-input">
-            <br>
-
-            <!-- Button triggers new search topic to be added -->
-            <input id="add-search" type="submit" value="temp">
-        </form>
+                <!-- Button triggers new search topic to be added -->
+                <!-- <input id="add-search" type="submit" value="temp"> -->
+                <!-- <button id="add-search" type="submit" value="add me"></button> -->
+            </form>
+        </div>
 
         <!-- Gifs will Get Dumped Here -->
         <div id="gifs-view"></div>
@@ -43,13 +63,13 @@
         <script type="text/javascript">
 
             // Global variables: Initial array of topics
-            var topics = ["North Shore surfing", "Kilauea lava flow", "Oahu", "Kauai", "Maui", "Hawaii snorkle", "Aloha"];
+            var topics = ["Sea turtle", "Spinner dolphin", "Oahu", "Maui", "Kauai waterfall", "Hawaii surfing", "Kilauea lava flow", "Hawaii big waves"];
 
             // displaySearchInfo function re-renders the HTML to display the appropriate content
             function displaySearchInfo() {
 
                 var topic = $(this).attr("data-name");
-    
+
                 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=D4Z98APNkOv11SGew7wHNFGJ2ZcULCta&limit=10";
 
                 console.log(queryURL);
@@ -86,15 +106,11 @@
                         // Putting the entire topic above the previous topics
                         $("#gifs-view").prepend(searchDiv);
                     }
-
-
                 });
-
             }
 
             // Function for displaying topic data
             function renderButtons() {
-
                 // Deleting the topics prior to adding new topics
                 // (this is necessary otherwise you will have repeat buttons)
                 $("#buttons-view").empty();
@@ -106,7 +122,9 @@
                     // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
                     var a = $("<button>");
                     // Adding a class of topic-btn to our button
-                    a.addClass("topic-btn");
+                    a.addClass("topic-btn fas fa-umbrella-beach");
+                    // a.css("color:blue");
+                    // a.addClass("topic-btn fas fa-umbrella-beach style='color:blue;'"); //???????
                     // Adding a data-attribute
                     a.attr("data-name", topics[i]);
                     // Providing the initial button text
@@ -115,7 +133,6 @@
                     $("#buttons-view").append(a);
                 }
             }
-
 
 
             // Main process
