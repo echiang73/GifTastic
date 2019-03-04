@@ -4,152 +4,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/jpg" href="assets/images/echiang-brand.png" />
+    <!-- <link rel="shortcut icon" type="image/jpg" href="assets/images/echiang-brand.png" /> -->
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> -->
 
-    <title>Marvel Studios Trivia</title>
+    <title>Hawaii GifTastic</title>
 
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>Movie Search</h1>
+    <div class="container">
+        <h1>Hawaii Gif Search</h1>
 
-    <!-- Rendered Buttons will get Dumped Here  -->
-    <div id="buttons-view"></div>
+        <!-- Rendered Buttons will get Dumped Here  -->
+        <div id="buttons-view"></div>
 
-    <form id="movie-form">
-      <label for="movie-input">Add a Movie, Yo!</label>
-      <input type="text" id="movie-input">
-      <br>
+        <form id="search-form">
+            <label for="search-input">Search</label>
+            <input type="text" id="search-input">
+            <br>
 
-      <!-- Button triggers new movie to be added -->
-      <input id="add-movie" type="submit" value="Add a Movie, Yo!">
-    </form>
+            <!-- Button triggers new search topic to be added -->
+            <input id="add-search" type="submit" value="temp">
+        </form>
 
-    <!-- Movies will Get Dumped Here -->
-    <div id="movies-view"></div>
+        <!-- Gifs will Get Dumped Here -->
+        <div id="gifs-view"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-      // Initial array of movies
-      var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
 
-      // displayMovieInfo function re-renders the HTML to display the appropriate content
-      function displayMovieInfo() {
+            // Global variables: Initial array of topics
+            var topics = ["North Shore surfing", "Kilauea lava flow", "Oahu", "Kauai", "Maui", "Hawaii snorkle", "Aloha"];
 
-        var movie = $(this).attr("data-name");
-        var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+            // displaySearchInfo function re-renders the HTML to display the appropriate content
+            function displaySearchInfo() {
 
-        // Creating an AJAX call for the specific movie button being clicked
-        $.ajax({
-          url: queryURL,
-          method: "GET"
-        }).then(function(response) {
+                var topic = $(this).attr("data-name");
+    
+                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=D4Z98APNkOv11SGew7wHNFGJ2ZcULCta&limit=10";
 
-          // Creating a div to hold the movie
-          var movieDiv = $("<div class='movie'>");
+                console.log(queryURL);
 
-          // Storing the rating data
-          var rating = response.Rated;
+                // Creating an AJAX call for the specific search button being clicked
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                }).then(function (response) {
+                    console.log(response);
 
-          // Creating an element to have the rating displayed
-          var pOne = $("<p>").text("Rating: " + rating);
+                    for (var i = 0; i < response.data.length; i++) {
+                        // Creating a div to hold the topic
+                        var searchDiv = $("<div class='topic'>");
 
-          // Displaying the rating
-          movieDiv.append(pOne);
+                        // Storing the rating data
+                        var gifRating = response.data[i].rating;
 
-          // Storing the release year
-          var released = response.Released;
+                        // Creating an element to have the rating displayed
+                        var pOne = $("<p>").text("Rating: " + gifRating);
 
-          // Creating an element to hold the release year
-          var pTwo = $("<p>").text("Released: " + released);
+                        // Displaying the rating
+                        searchDiv.append(pOne);
 
-          // Displaying the release year
-          movieDiv.append(pTwo);
+                        // Retrieving the URL for the image
+                        var imgURL = response.data[i].images.original.url;
 
-          // Storing the plot
-          var plot = response.Plot;
+                        // Creating an element to hold the image
+                        var image = $("<img>").attr("src", imgURL);
 
-          // Creating an element to hold the plot
-          var pThree = $("<p>").text("Plot: " + plot);
+                        // Appending the image
+                        searchDiv.append(image);
 
-          // Appending the plot
-          movieDiv.append(pThree);
+                        // Putting the entire topic above the previous topics
+                        $("#gifs-view").prepend(searchDiv);
+                    }
 
-          // Retrieving the URL for the image
-          var imgURL = response.Poster;
 
-          // Creating an element to hold the image
-          var image = $("<img>").attr("src", imgURL);
+                });
 
-          // Appending the image
-          movieDiv.append(image);
+            }
 
-          // Putting the entire movie above the previous movies
-          $("#movies-view").prepend(movieDiv);
-        });
+            // Function for displaying topic data
+            function renderButtons() {
 
-      }
+                // Deleting the topics prior to adding new topics
+                // (this is necessary otherwise you will have repeat buttons)
+                $("#buttons-view").empty();
 
-      // Function for displaying movie data
-      function renderButtons() {
+                // Looping through the array of topics
+                for (var i = 0; i < topics.length; i++) {
 
-        // Deleting the movies prior to adding new movies
-        // (this is necessary otherwise you will have repeat buttons)
-        $("#buttons-view").empty();
-
-        // Looping through the array of movies
-        for (var i = 0; i < movies.length; i++) {
-
-          // Then dynamicaly generating buttons for each movie in the array
-          // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-          var a = $("<button>");
-          // Adding a class of movie-btn to our button
-          a.addClass("movie-btn");
-          // Adding a data-attribute
-          a.attr("data-name", movies[i]);
-          // Providing the initial button text
-          a.text(movies[i]);
-          // Adding the button to the buttons-view div
-          $("#buttons-view").append(a);
-        }
-      }
-
-      // This function handles events where a movie button is clicked
-      $("#add-movie").on("click", function(event) {
-        event.preventDefault();
-        // This line grabs the input from the textbox
-        var movie = $("#movie-input").val().trim();
-
-        // Adding movie from the textbox to our array
-        movies.push(movie);
-
-        // Calling renderButtons which handles the processing of our movie array
-        renderButtons();
-      });
-
-      // Adding a click event listener to all elements with a class of "movie-btn"
-      $(document).on("click", ".movie-btn", displayMovieInfo);
-
-      // Calling the renderButtons function to display the intial buttons
-      renderButtons();
-    </script>
-  </div>
+                    // Then dynamicaly generating buttons for each topic in the array
+                    // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+                    var a = $("<button>");
+                    // Adding a class of topic-btn to our button
+                    a.addClass("topic-btn");
+                    // Adding a data-attribute
+                    a.attr("data-name", topics[i]);
+                    // Providing the initial button text
+                    a.text(topics[i]);
+                    // Adding the button to the buttons-view div
+                    $("#buttons-view").append(a);
+                }
+            }
 
 
 
+            // Main process
 
-  <footer class="footer">
+            // Calling the renderButtons function to display the intial buttons
+            renderButtons();
+
+            // Adding a click event listener to all elements with a class of "topic-btn"
+            $(document).on("click", ".topic-btn", displaySearchInfo);
+
+            // This function handles events where a search button is clicked
+            $("#add-search").on("click", function (event) {
+                event.preventDefault();
+                // This line grabs the input from the textbox
+                var topic = $("#search-input").val().trim();
+
+                // Adding topic from the textbox to our array
+                topics.push(topic);
+
+                // Calling renderButtons which handles the processing of our topics array
+                renderButtons();
+            });
+
+
+
+        </script>
+    </div>
+
+    <!-- <footer class="footer">
     <a class=link href="https://echiang73.github.io/" target="_blank">Eddie Chiang &circledR; 2019 | </a>
     <a class=link href="https://www.linkedin.com/in/eddie-t-chiang" target="_blank"><i
             class="fab fa-linkedin fa-2x" style="color:#f8ba4b"></i></a>
@@ -157,11 +152,11 @@
             style="color:#f8ba4b"></i></a>
     <a class=link href="https://angel.co/eddie-chiang" target="_blank"><i class="fab fa-angellist fa-2x"
             style="color:#f8ba4b"></i></a>
-</footer>
+</footer> -->
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
-<!-- <script type="text/javascript" src="assets/javascript/app.js"></script> -->
+    <!-- <script type="text/javascript" src="assets/javascript/app.js"></script> -->
 
 </body>
 
