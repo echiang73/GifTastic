@@ -3,7 +3,7 @@
     src: url(../font/TikiTropic.ttf);
 }
 body{
-    background: url(../images/kapalua-bay-besthawaii0216.jpg) no-repeat center center fixed;
+    background: url(../images/kapalua-bay-besthawaii0216.jpg) no-repeat center fixed;
     /* background-image: url(../images/kapalua-bay-besthawaii0216.jpg); */
     background-position: top;
     background-repeat: no-repeat;
@@ -101,14 +101,14 @@ input[type=text]:focus{
 /* Medium devices (landscape tablet, 1080px) */
 @media only screen and (max-width: 1080px) {
     body{
-        background: url('../images/kapalua-bay-besthawaii0216alt.jpg') no-repeat center center fixed;
+        background: url('../images/kapalua-bay-besthawaii0216alt.jpg') no-repeat center fixed;
     }
   } 
 
 /* Small devices (portrait phone, 520px) */
 @media only screen and (max-width: 520px) {
     body{
-        background: url('../images/kapalua-bay-besthawaii0216alt2.jpg') no-repeat center center fixed;
+        background: url('../images/kapalua-bay-besthawaii0216alt2.jpg') no-repeat center fixed;
     }
     .fullTitle{
         font-size: 40px;
