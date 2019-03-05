@@ -22,6 +22,6 @@ https://echiang73.github.io/GifTastic/
 
 ### Here are the previews of the game:
 
-![](assets/images/gamepreview.gif "gif")
+![](assets/images/webpreview.gif "gif")
 
-![](assets/images/mobilegamepreview.gif "gif")
+![](assets/images/mobilewebpreview.gif "gif")
