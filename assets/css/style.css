@@ -3,7 +3,8 @@
     src: url(../font/TikiTropic.ttf);
 }
 body{
-    background-image: url(../images/kapalua-bay-besthawaii0216.jpg);
+    background: url(../images/kapalua-bay-besthawaii0216.jpg) no-repeat center center fixed;
+    /* background-image: url(../images/kapalua-bay-besthawaii0216.jpg); */
     background-position: top;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -84,7 +85,7 @@ input[type=text]:focus{
     color: green;
 }
 #titleBlu{
-    color: blue;
+    color: darkblue;
 }
 #titleInd{
     color: indigo;
