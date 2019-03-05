@@ -51,16 +51,6 @@ input[type=text]:focus{
 .inputWithIcon input[type=text]:focus + i{
     color: dodgerblue;
 }
-/* .inputWithIcon.inputIconBg i{
-    background-color: #aaa;
-    color: #fff;
-    padding: 3px 7px;
-    border-radius: 8px 0 0 8px;
-}
-.inputWithIcon.inputIconBg input[type=text]:focus + i{
-    color:#fff;
-    background-color: dodgerblue;
-} */
 .fullTitle{
     justify-content: center;
     display: flex;
@@ -97,4 +87,23 @@ input[type=text]:focus{
     border-radius: 8px;
     padding: 5px;
     margin-right: 8px;
+    background-color: #f4b87c;
+    border: 2px solid blue;
+    color: blue;
+    margin-bottom: 10px;
 }
+.searchDiv{
+    /* making the images go in one line rather than block & adding spacing between the images*/
+    /* float: left;
+    margin: 3px; */
+}
+
+/* Small devices (portrait phone, 520px) */
+@media only screen and (max-width: 520px) {
+    body{
+        background: url('../images/kapalua-bay-besthawaii0216alt.jpg') no-repeat center center fixed;
+    }
+    .fullTitle{
+        font-size: 40px;
+    }
+  } 

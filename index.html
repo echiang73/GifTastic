@@ -12,11 +12,9 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> -->
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <title>Hawaii GifTastic</title>
-
 </head>
 
 <body>
@@ -37,144 +35,36 @@
             <h6 class="">Click on a topic button: </h6>
 
             <!-- Rendered Buttons will get Dumped Here  -->
-            <div id="buttons-view"></div><br/>
+            <div id="buttons-view"></div><br />
             <h6 class="">Or create your own topic button: </h6>
             <form id="search-form">
                 <label for="search-input"></label>
                 <div class="inputWithIcon">
                     <input type="text" id="search-input" placeholder="Enter a new search">
-                    <i class="fas fa-search fa-lg fa-fw" aria-hidden="true" id="add-search" type="submit" value="add me"></i>
+                    <i class="fas fa-search fa-lg fa-fw" aria-hidden="true" id="add-search" type="submit"
+                        value="add me"></i>
                 </div>
-                <!-- <div class="inputWithIcon inputIconBg">
-                    <input type="text" id="search-input" placeholder="Enter a search term">
-                    <i class="fas fa-search" id="add-search" type="submit" value="add me"></i>
-                </div> -->
-
-                <!-- Button triggers new search topic to be added -->
-                <!-- <input id="add-search" type="submit" value="temp"> -->
-                <!-- <button id="add-search" type="submit" value="add me"></button> -->
             </form>
         </div>
 
         <!-- Gifs will Get Dumped Here -->
-        <div id="gifs-view"></div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
-
-            // Global variables: Initial array of topics
-            var topics = ["Sea turtle", "Spinner dolphin", "Oahu", "Maui", "Kauai waterfalls", "Hawaii surfing", "Kilauea lava flow", "Hawaii big waves"];
-
-            // displaySearchInfo function re-renders the HTML to display the appropriate content
-            function displaySearchInfo() {
-
-                var topic = $(this).attr("data-name");
-
-                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=D4Z98APNkOv11SGew7wHNFGJ2ZcULCta&limit=10";
-
-                console.log(queryURL);
-
-                // Creating an AJAX call for the specific search button being clicked
-                $.ajax({
-                    url: queryURL,
-                    method: "GET"
-                }).then(function (response) {
-                    console.log(response);
-
-                    for (var i = 0; i < response.data.length; i++) {
-                        // Creating a div to hold the topic
-                        var searchDiv = $("<div class='topic'>");
-
-                        // Storing the rating data
-                        var gifRating = response.data[i].rating;
-
-                        // Creating an element to have the rating displayed
-                        var pOne = $("<p>").text("Rating: " + gifRating);
-
-                        // Displaying the rating
-                        searchDiv.append(pOne);
-
-                        // Retrieving the URL for the image
-                        var imgURL = response.data[i].images.original.url;
-
-                        // Creating an element to hold the image
-                        var image = $("<img>").attr("src", imgURL);
-
-                        // Appending the image
-                        searchDiv.append(image);
-
-                        // Putting the entire topic above the previous topics
-                        $("#gifs-view").prepend(searchDiv);
-                    }
-                });
-            }
-
-            // Function for displaying topic data
-            function renderButtons() {
-                // Deleting the topics prior to adding new topics
-                // (this is necessary otherwise you will have repeat buttons)
-                $("#buttons-view").empty();
-
-                // Looping through the array of topics
-                for (var i = 0; i < topics.length; i++) {
-
-                    // Then dynamicaly generating buttons for each topic in the array
-                    // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-                    var a = $("<button>");
-                    // Adding a class of topic-btn to our button
-                    a.addClass("topic-btn fas fa-umbrella-beach");
-                    // a.css("color:blue");
-                    // a.addClass("topic-btn fas fa-umbrella-beach style='color:blue;'"); //???????
-                    // Adding a data-attribute
-                    a.attr("data-name", topics[i]);
-                    // Providing the initial button text
-                    a.text(topics[i]);
-                    // Adding the button to the buttons-view div
-                    $("#buttons-view").append(a);
-                }
-            }
-
-
-            // Main process
-
-            // Calling the renderButtons function to display the intial buttons
-            renderButtons();
-
-            // Adding a click event listener to all elements with a class of "topic-btn"
-            $(document).on("click", ".topic-btn", displaySearchInfo);
-
-            // This function handles events where a search button is clicked
-            $("#add-search").on("click", function (event) {
-                event.preventDefault();
-                // This line grabs the input from the textbox
-                var topic = $("#search-input").val().trim();
-
-                // Adding topic from the textbox to our array
-                topics.push(topic);
-
-                // Calling renderButtons which handles the processing of our topics array
-                renderButtons();
-            });
-
-
-
-        </script>
+        <div class="gif-container">
+            <div class="col-md-4 col-md-4 col-md-4 col-md-4">
+                <div id="gifs-view"></div>
+            </div>
+        </div>
     </div>
 
     <!-- <footer class="footer">
-    <a class=link href="https://echiang73.github.io/" target="_blank">Eddie Chiang &circledR; 2019 | </a>
-    <a class=link href="https://www.linkedin.com/in/eddie-t-chiang" target="_blank"><i
-            class="fab fa-linkedin fa-2x" style="color:#f8ba4b"></i></a>
-    <a class=link href="https://github.com/echiang73" target="_blank"><i class="fab fa-github fa-2x"
-            style="color:#f8ba4b"></i></a>
-    <a class=link href="https://angel.co/eddie-chiang" target="_blank"><i class="fab fa-angellist fa-2x"
-            style="color:#f8ba4b"></i></a>
-</footer> -->
+        <a class=link href="https://echiang73.github.io/" target="_blank">Eddie Chiang &circledR; 2019 | </a>
+        <a class=link href="https://www.linkedin.com/in/eddie-t-chiang" target="_blank"><i class="fab fa-linkedin fa-2x"
+                style="color:#f8ba4b"></i></a>
+        <a class=link href="https://github.com/echiang73" target="_blank"><i class="fab fa-github fa-2x"
+                style="color:#f8ba4b"></i></a>
+        <a class=link href="https://angel.co/eddie-chiang" target="_blank"><i class="fab fa-angellist fa-2x"
+                style="color:#f8ba4b"></i></a>
+    </footer> -->
 
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-
-    <!-- <script type="text/javascript" src="assets/javascript/app.js"></script> -->
-
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
-
 </html>
