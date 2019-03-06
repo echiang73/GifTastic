@@ -152,9 +152,9 @@ footer {
 @media only screen and (max-width: 520px) {
     body{
         background: url('../images/kapalua-bay-besthawaii0216alt2.jpg') no-repeat center center fixed;
-        /* background-position: top;
+        background-position: top;
         background-repeat: no-repeat;
-        background-size: 100%; */
+        /* background-size: 100%; */
         background-color: #f4b87c;
         -webkit-background-size: cover;
         -moz-background-size: cover;
