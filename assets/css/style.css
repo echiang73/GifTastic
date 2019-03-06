@@ -3,8 +3,10 @@
     src: url(../font/TikiTropic.ttf);
 }
 body{
-    background: url(../images/kapalua-bay-besthawaii0216.jpg) no-repeat center fixed;
-    /* background-image: url(../images/kapalua-bay-besthawaii0216.jpg); */
+    /* background: url(../images/kapalua-bay-besthawaii0216.jpg) no-repeat center fixed; */
+    background-image: url(../images/kapalua-bay-besthawaii0216.jpg);
+    background-attachment: fixed;
+
     background-position: top;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -156,6 +158,7 @@ footer {
 @media only screen and (max-width: 520px) {
     body{
         background: url('../images/kapalua-bay-besthawaii0216alt2.jpg') no-repeat center fixed;
+        background-attachment: fixed;
         background-position: top;
         background-repeat: no-repeat;
         background-size: 576px 1000px;
@@ -175,3 +178,4 @@ footer {
         font-size: 14px;
     }
   } 
+
