@@ -61,12 +61,11 @@ function displaySearchInfo() {
             image.attr("data-still", response.data[i].images.fixed_width_still.url);
             image.attr("data-animate", response.data[i].images.fixed_width.url);
             image.addClass("image");
-            image.css("margin", "-10px 20px 20px 0");
+            // image.css("margin", "-10px 20px 20px 0");
 
             // Putting the entire topic above the previous topics
             searchDiv.append(image);
             $("#gifs-view").prepend(searchDiv);
-            // $("#gifs-view").prepend(searchDiv, "<p/>"); // why can't I add a hr tag here?
         }
     });
 }

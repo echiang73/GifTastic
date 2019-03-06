@@ -9,7 +9,7 @@ body{
     background-position: top;
     background-repeat: no-repeat;
     background-size: 100%;
-    /* background-color: #f4b87c; */
+    background-color: #f4b87c;
 }
 form{
     margin-top: -25px;
@@ -114,6 +114,9 @@ input[type=text]:focus{
     width: 200px;
     border: 2px solid blue;
 }
+.image{
+    margin: -10px 20px 20px 0;
+}
 footer {
     font-family:  Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -149,8 +152,7 @@ footer {
         background-attachment: fixed;
         background-position: top;
         background-repeat: no-repeat;
-        /* background-size: 1152px 1000px; */
-        /* background-color: #f4b87c; */
+        background-color: #f4b87c;
     }
   } 
 
@@ -161,15 +163,7 @@ footer {
         background-attachment: fixed;
         background-position: top;
         background-repeat: no-repeat;
-        /* background-size: 576px 1000px; */
-        /* background-color: #f4b87c; */
-        /* -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        /* background-size: cover; */
-        /* padding-top:80px; */
-        /* position:relative; */
-        /* z-index:5; */
+        background-color: #f4b87c;
     }
     .fullTitle{
         font-size: 40px;
