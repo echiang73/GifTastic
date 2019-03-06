@@ -1,12 +1,12 @@
 // Global variables: Initial array of topics ----------------------------------------------------------------------
 
 var topics = ["Sea turtle", "Spinner dolphin", "Lanikai Hawaii", "Oahu", "Maui", "Kauai waterfalls", "Hawaii surfing", "Kilauea lava flow"];
-var audioMusic = new Audio("assets/sound/somewhere.mp3");
+
 
 // Functions ------------------------------------------------------------------------------------------------------
-function playMusic(){
-    audioMusic.play();
-}
+// function playMusic(){
+//     audioMusic.play();
+// };
 
 // Function for displaying topic data
 function renderButtons() {
@@ -74,9 +74,17 @@ function displaySearchInfo() {
 
 // Main processes -------------------------------------------------------------------------------------------------------
 
+
+
+$(document).ready(function(){
+    var audioMusic = new Audio("assets/sound/somewhere.mp3");
+    audioMusic.play();
+});
+
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
-playMusic();
+// playMusic();
+
 
 // Adding a click event listener to all elements with a class of "topic-btn"
 $(document).on("click", ".topic-btn", displaySearchInfo);
