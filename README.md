@@ -16,9 +16,11 @@ https://echiang73.github.io/GifTastic/
 * HTML5
 * CSS3
 * JavaScript
+* Bootstrap
 * jQuery
 * API AJAX
 * Responsive Web Design Media Query
+* Form input Font Awesome image and use of pseudocodes
 
 ### Here are the previews of the game:
 
