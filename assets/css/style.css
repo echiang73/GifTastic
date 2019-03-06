@@ -145,8 +145,10 @@ footer {
 @media only screen and (max-width: 1080px) {
     body{
         background: url('../images/kapalua-bay-besthawaii0216alt.jpg') no-repeat center fixed;
-        background-position: relative;
-        /* background-color: #f4b87c; */
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: 1152px 1000px;
+        background-color: #f4b87c;
     }
   } 
 
@@ -154,17 +156,17 @@ footer {
 @media only screen and (max-width: 520px) {
     body{
         background: url('../images/kapalua-bay-besthawaii0216alt2.jpg') no-repeat center fixed;
-        /* background-position: top; */
+        background-position: top;
         background-repeat: no-repeat;
         background-size: 576px 1000px;
         background-color: #f4b87c;
-        -webkit-background-size: cover;
+        /* -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         /* background-size: cover; */
         /* padding-top:80px; */
-        position:relative;
-        z-index:5;
+        /* position:relative; */
+        z-index:5; */
     }
     .fullTitle{
         font-size: 40px;
