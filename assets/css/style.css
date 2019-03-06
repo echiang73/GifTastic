@@ -151,13 +151,23 @@ footer {
 /* Small devices (portrait phone, 520px) */
 @media only screen and (max-width: 520px) {
     body{
-        background: url('../images/kapalua-bay-besthawaii0216alt2.jpg') no-repeat center fixed;
-        background-position: top;
+        background: url('../images/kapalua-bay-besthawaii0216alt2.jpg') no-repeat center center fixed;
+        /* background-position: top;
         background-repeat: no-repeat;
-        background-size: 100%;
+        background-size: 100%; */
         background-color: #f4b87c;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        /* padding-top:80px; */
+        position:relative;
+        z-index:5;
     }
     .fullTitle{
         font-size: 40px;
+    }
+    #instructions{
+        font-size: 14px;
     }
   } 
