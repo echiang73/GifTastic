@@ -1,12 +1,9 @@
 // Global variables: Initial array of topics ----------------------------------------------------------------------
 
 var topics = ["Sea turtle", "Spinner dolphin", "Lanikai Hawaii", "Oahu", "Maui", "Kauai waterfalls", "Hawaii surfing", "Kilauea lava flow"];
-
+var audioMusic = new Audio("assets/sound/somewhere.mp3");
 
 // Functions ------------------------------------------------------------------------------------------------------
-// function playMusic(){
-//     audioMusic.play();
-// };
 
 // Function for displaying topic data
 function renderButtons() {
@@ -32,6 +29,7 @@ function displaySearchInfo() {
     var topic = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=D4Z98APNkOv11SGew7wHNFGJ2ZcULCta&limit=10";
     console.log(queryURL);
+    $("#instructions").hide();
 
     // Creating an AJAX call for the specific search button being clicked
     $.ajax({
@@ -46,10 +44,11 @@ function displaySearchInfo() {
             // Storing the rating data
             var gifRating = (response.data[i].rating);
             var pOne = $("<p>").text("Rated: " + gifRating.toUpperCase());
-            pOne.css("text-align", "center");
-            pOne.css("background-color", "#f4b87c");
-            pOne.css("width", "200px");
-            pOne.css("border", "2px solid blue")
+            // pOne.css("text-align", "center");
+            // pOne.css("background-color", "#f4b87c");
+            // pOne.css("width", "200px");
+            // pOne.css("border", "2px solid blue")
+            pOne.addClass("newGif");
             searchDiv.append(pOne);
 
             // Retrieving the URL for the image
@@ -74,17 +73,10 @@ function displaySearchInfo() {
 
 // Main processes -------------------------------------------------------------------------------------------------------
 
-
-
-$(document).ready(function(){
-    var audioMusic = new Audio("assets/sound/somewhere.mp3");
-    audioMusic.play();
-});
+audioMusic.play();
 
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
-// playMusic();
-
 
 // Adding a click event listener to all elements with a class of "topic-btn"
 $(document).on("click", ".topic-btn", displaySearchInfo);
@@ -97,6 +89,7 @@ $("#add-search").on("click", function (event) {
     if (topic == "") {
         return false; // so user cannot add a blank button
     }
+    $("#instructions").hide();
     topics.push(topic);
     renderButtons();
 });
@@ -111,5 +104,19 @@ $(document).on("click", ".image", function () {
     else {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
+    }
+});
+
+// Add a onkeyup event listener to input on return key
+$(document).on("keypress", function(e){
+    
+    if(e.which == 13) {
+        var topic = $("#search-input").val().trim();
+    if (topic == "") {
+        return false; // so user cannot add a blank button
+    }
+    event.preventDefault();
+    topics.push(topic);
+    renderButtons();
     }
 });

@@ -13,6 +13,10 @@ body{
 form{
     margin-top: -25px;
 }
+#instructions{
+    color:yellow;
+    text-align: center;
+}
 /* this is for the new search box */
 input[type=text]{ 
     /* width: 100%; */
@@ -30,7 +34,7 @@ input[type=text]:focus{
 }
 /* this is for the entire new search box with icon */
 .inputWithIcon input[type=text]{
-    padding-left: 40px;
+    /* padding-left: 40px; */
 }
 /* this is the entire row for the new search box with icons */
 .inputWithIcon{
@@ -42,7 +46,7 @@ input[type=text]:focus{
     left: 0;
     top: 15px;
     /* padding:9px 8px; */ /* what is this? it's causing the gray padding*/
-    margin-left: 3px; /* will push icon to the right */
+    margin-left: 150px; /* will push icon to the right */
     border-radius: 10px; /* added, doesn't seem to do anything to the icon */
     color: #aaa;
     transition: 0.5s;
@@ -100,8 +104,14 @@ input[type=text]:focus{
     color: blue;
     margin-bottom: 10px;
 }
-#gifs-view{
-    margin-left: 20px;
+.gif-container{
+    margin: -20px 0 0 30px;
+}
+.newGif{
+    text-align: center;
+    background-color: #f4b87c;
+    width: 200px;
+    border: 2px solid blue;
 }
 footer {
     font-family:  Arial, Helvetica, sans-serif;
