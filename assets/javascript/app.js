@@ -107,14 +107,15 @@ $(document).on("click", ".image", function () {
 });
 
 // Add a onkeyup event listener to input on return key
-$(document).on("keypress", function(e){
+$(document).on("keypress", function(event){
     
-    if(e.which == 13) {
+    if(event.which == 13) {
+        event.preventDefault();
         var topic = $("#search-input").val().trim();
     if (topic == "") {
         return false; // so user cannot add a blank button
     }
-    event.preventDefault();
+    
     topics.push(topic);
     renderButtons();
     }
